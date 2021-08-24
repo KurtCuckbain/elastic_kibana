@@ -9,7 +9,7 @@ services:
       - discovery.type=single-node #поиск только на одном сервере (иначе начнет шариться по всем)
       - xpack.security.enabled=true #включаем базовые сервисы безопасности
       - xpack.security.authc.api_key.enabled=true #включаем доступ по API ключам
-      - ELASTIC_PASSWORD=typaparol1
+      - ELASTIC_PASSWORD=password
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #оверрайдим размер кучи на 512мб, иначе начинает жрать ВСЮ оперативку
     volumes:
     - elastic_kibana-data:/usr/share/elasticsearch/data
@@ -25,7 +25,7 @@ services:
      - SERVER_HOST=0.0.0.0
      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
      - ELASTICSEARCH_USERNAME=elastic
-     - ELASTICSEARCH_PASSWORD=typaparol1
+     - ELASTICSEARCH_PASSWORD=password
     ports:
       - 5601:5601
     networks:
