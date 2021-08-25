@@ -4,13 +4,13 @@ services:
     image: elasticsearch:7.14.0
     container_name: elasticsearch
     environment:
-      - node.name=elasticsearch #имя сервера
+      - node.name=elasticsearch #имя ноды
       - cluster.name=es-cluster-7 #имя кластера
-      - discovery.type=single-node #поиск только на одном сервере (иначе начнет шариться по всем)
+      - discovery.type=single-node #кластер только из одной ноды
       - xpack.security.enabled=true #включаем базовые сервисы безопасности
       - xpack.security.authc.api_key.enabled=true #включаем доступ по API ключам
-      - ELASTIC_PASSWORD=password
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #оверрайдим размер кучи на 512мб, иначе начинает жрать ВСЮ оперативку
+      - ELASTIC_PASSWORD=password #задаем пароль для встроенного юзера elastic
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #оверрайдим размер кучи на 512мб, иначе начинает есть всю оперативку
     volumes:
     - elastic_kibana-data:/usr/share/elasticsearch/data
     ports:
